@@ -11,14 +11,17 @@ public class Application {
         Scanner scanner = new Scanner(System.in);
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = scanner.nextLine();
-
         List<String> carNames = Arrays.asList(input.split(","));
 
         System.out.println("시도할 횟수는 몇 회인가요?");
+        //Integer vs int??
         Integer count = scanner.nextInt();
+
         scanner.close();
 
-
+        //자동차 경주 실행
+        RaceManager raceManager = new RaceManager();
+        raceManager.raceCar(count, carNames);
 
     }
 }
