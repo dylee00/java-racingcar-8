@@ -30,7 +30,7 @@ public class Application {
         }
 
         for(String carName : carNames) {
-            if (carName.isEmpty()) {
+            if (carName.isBlank()) {
                 throw new InputCarNameException();
             }else if (carName.length() > MAX_CAR_NAME_LENGTH) {
                 throw new CarNameLengthException();
@@ -40,14 +40,22 @@ public class Application {
         System.out.println("시도할 횟수는 몇 회인가요?");
 
         String inputCount = Console.readLine();
-        if(inputCount.isEmpty()) {
+        if(inputCount.isBlank()) {
             throw new InvalidRaceCountException();
         }
 
-        int count = Integer.parseInt(Console.readLine());
+        int count;
+
+        try {
+            count = Integer.parseInt(inputCount);
+        } catch (NumberFormatException e) {
+            throw new InvalidRaceCountException();
+        }
+
         if(count < 1) {
             throw new InvalidRaceCountException();
         }
+
 
         Console.close();
 
