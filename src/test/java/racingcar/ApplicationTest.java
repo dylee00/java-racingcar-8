@@ -89,6 +89,15 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    @DisplayName("자동차의 이름이 중복된 경우 예외 처리 테스트")
+    void DuplicatedCarNameException() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi,pobi", "1"))
+                        .isInstanceOf(DuplicateCarNameException.class)
+        );
+    }
+
+    @Test
     @DisplayName("경주 횟수 입력이 잘못된 경우 예외 처리 테스트")
     void InvalidRaceCountException() {
         assertSimpleTest(() ->

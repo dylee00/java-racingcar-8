@@ -1,11 +1,7 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.exception.CarNameLengthException;
-import racingcar.exception.InValidCarNameException;
-import racingcar.exception.InputCarNameException;
-import racingcar.exception.InsufficientCarCountException;
-import racingcar.exception.InvalidRaceCountException;
+import racingcar.exception.*;
 import racingcar.race.RaceManager;
 
 import java.util.Arrays;
@@ -37,6 +33,11 @@ public class Application {
             }
         }
 
+        long distinctCount = carNames.stream().map(String::trim).distinct().count();
+        if(distinctCount != carNames.size()) {
+            throw new DuplicateCarNameException();
+        }
+
         System.out.println("시도할 횟수는 몇 회인가요?");
 
         String inputCount = Console.readLine();
@@ -55,7 +56,6 @@ public class Application {
         if(count < 1) {
             throw new InvalidRaceCountException();
         }
-
 
         Console.close();
 
