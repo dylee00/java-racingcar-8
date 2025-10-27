@@ -70,6 +70,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("입력받은 자동차의 이름 중 공백이 있을 경우 예외 처리 테스트")
+    void InputCarNameException() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a, ,c", "1"))
+                        .isInstanceOf(InputCarNameException.class)
+        );
+    }
+
 
     @Override
     public void runMain() {
