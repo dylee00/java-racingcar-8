@@ -1,4 +1,4 @@
-package racingcar;
+package racingcar.race;
 
 import camp.nextstep.edu.missionutils.Randoms;
 
@@ -9,12 +9,10 @@ public class RaceManager {
     public void raceCar(int count, List<String> carNames) {
         //자동차의 이름 -> key, 전진 횟수 -> value
         Map<String, Integer> carPositions = new HashMap<>();
-
         //초기화
         for(String carName : carNames) {
             carPositions.put(carName, 0);
         }
-
         System.out.println("실행 결과");
         for(int round = 0; round < count; round++) {
             playOneRound(carPositions);
