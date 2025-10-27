@@ -88,7 +88,24 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("경주 횟수 입력이 잘못된 경우 예외 처리 테스트")
+    void InvalidRaceCountException() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abd,abc", "0"))
+                        .isInstanceOf(InvalidRaceCountException.class)
+        );
 
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abd,abc", "-1"))
+                        .isInstanceOf(InvalidRaceCountException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abd,abc", "a"))
+                        .isInstanceOf(InvalidRaceCountException.class)
+        );
+    }
 
     @Override
     public void runMain() {
