@@ -1,20 +1,19 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Console;
 import racingcar.exception.CarNameLengthException;
 import racingcar.race.RaceManager;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 public class Application {
     static final int MAX_CAR_NAME_LENGTH = 5;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
-        Scanner scanner = new Scanner(System.in);
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
-        String input = scanner.nextLine();
-        List<String> carNames = Arrays.asList(input.split(","));
+        String inputCarNames = Console.readLine();
+        List<String> carNames = Arrays.asList(inputCarNames.split(","));
 
         for(String carName : carNames) {
             if (carName.length() > MAX_CAR_NAME_LENGTH) {
@@ -23,9 +22,9 @@ public class Application {
         }
 
         System.out.println("시도할 횟수는 몇 회인가요?");
-        int count = scanner.nextInt();
+        int count = Integer.parseInt(Console.readLine());
 
-        scanner.close();
+        Console.close();
 
         //자동차 경주 실행
         RaceManager raceManager = new RaceManager();
