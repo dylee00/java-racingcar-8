@@ -79,6 +79,16 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("자동차의 이름이 5글자를 초과한 경우 예외 처리 테스트")
+    void CarNameLengthException() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("abcdefg,abc", "1"))
+                        .isInstanceOf(CarNameLengthException.class)
+        );
+    }
+
+
 
     @Override
     public void runMain() {
