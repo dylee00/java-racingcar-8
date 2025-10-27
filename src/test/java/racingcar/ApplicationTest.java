@@ -61,6 +61,15 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("자동차의 이름이 2개 미만으로 입력되었을 경우 예외 처리 테스트")
+    void InsufficientCarCountException() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a,", "1"))
+                        .isInstanceOf(InsufficientCarCountException.class)
+        );
+    }
+
 
     @Override
     public void runMain() {
