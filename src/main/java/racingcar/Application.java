@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.exception.CarNameLengthException;
 import racingcar.exception.InputCarNameException;
+import racingcar.exception.InsufficientCarCountException;
 import racingcar.exception.InvalidRaceCountException;
 import racingcar.race.RaceManager;
 
@@ -16,6 +17,10 @@ public class Application {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String inputCarNames = Console.readLine();
         List<String> carNames = Arrays.asList(inputCarNames.split(","));
+
+        if (carNames.size() < 2) {
+            throw new InsufficientCarCountException();
+        }
 
         for(String carName : carNames) {
             if (carName.isEmpty()) {
