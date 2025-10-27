@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Application {
+    static final int MAX_CAR_NAME_LENGTH = 5;
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         Scanner scanner = new Scanner(System.in);
@@ -16,11 +17,10 @@ public class Application {
         List<String> carNames = Arrays.asList(input.split(","));
 
         for(String carName : carNames) {
-            if (carName.length() > 5) {
+            if (carName.length() > MAX_CAR_NAME_LENGTH) {
                 throw new CarNameLengthException();
             }
         }
-
 
         System.out.println("시도할 횟수는 몇 회인가요?");
         int count = scanner.nextInt();

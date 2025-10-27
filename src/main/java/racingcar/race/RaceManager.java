@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class RaceManager {
-
+    static final int MOVABLE_NUM = 4;
     public void raceCar(int count, List<String> carNames) {
         //자동차의 이름 -> key, 전진 횟수 -> value
         Map<String, Integer> carPositions = new HashMap<>();
@@ -31,7 +31,7 @@ public class RaceManager {
 
     public boolean isMovable() {
         int randomNum = Randoms.pickNumberInRange(0, 9);
-        if (randomNum < 4) {
+        if (randomNum < MOVABLE_NUM) {
             return false;
         } else {
             return true;
