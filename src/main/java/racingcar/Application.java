@@ -2,6 +2,7 @@ package racingcar;
 
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.exception.CarNameLengthException;
+import racingcar.exception.InputCarNameException;
 import racingcar.race.RaceManager;
 
 import java.util.Arrays;
@@ -16,7 +17,9 @@ public class Application {
         List<String> carNames = Arrays.asList(inputCarNames.split(","));
 
         for(String carName : carNames) {
-            if (carName.length() > MAX_CAR_NAME_LENGTH) {
+            if (carName.isEmpty()) {
+                throw new InputCarNameException();
+            }else if (carName.length() > MAX_CAR_NAME_LENGTH) {
                 throw new CarNameLengthException();
             }
         }
