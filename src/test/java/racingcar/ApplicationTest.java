@@ -47,17 +47,17 @@ class ApplicationTest extends NsTest {
     void InvalidCarNameExceptionTest() {
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("pobi.javaji", "1"))
-                        .isInstanceOf(InValidCarNameException.class)
+                        .isInstanceOf(InvalidCarNameException.class)
         );
 
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException("a", "1"))
-                        .isInstanceOf(InValidCarNameException.class)
+                        .isInstanceOf(InvalidCarNameException.class)
         );
 
         assertSimpleTest(() ->
                 assertThatThrownBy(() -> runException(" ", "1"))
-                        .isInstanceOf(InValidCarNameException.class)
+                        .isInstanceOf(InvalidCarNameException.class)
         );
     }
 

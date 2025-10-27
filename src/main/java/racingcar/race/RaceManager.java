@@ -5,11 +5,10 @@ import camp.nextstep.edu.missionutils.Randoms;
 import java.util.*;
 
 public class RaceManager {
-    static final int MOVABLE_NUM = 4;
+    static final int MOVE_THRESHOLD = 4;
     public void raceCar(int count, List<String> carNames) {
         //자동차의 이름 -> key, 전진 횟수 -> value
         Map<String, Integer> carPositions = new HashMap<>();
-        //초기화
         for(String carName : carNames) {
             carPositions.put(carName, 0);
         }
@@ -24,14 +23,14 @@ public class RaceManager {
     public void playOneRound(Map<String, Integer> carPositions) {
         for(String carName : carPositions.keySet()) {
             if (isMovable()) {
-                carPositions.put(carName, carPositions.get(carName)+1);
+                carPositions.put(carName, carPositions.get(carName) + 1);
             }
         }
     }
 
     public boolean isMovable() {
-        int randomNum = Randoms.pickNumberInRange(0, 9);
-        if (randomNum < MOVABLE_NUM) {
+        int randomNumber = Randoms.pickNumberInRange(0, 9);
+        if (randomNumber < MOVE_THRESHOLD) {
             return false;
         } else {
             return true;

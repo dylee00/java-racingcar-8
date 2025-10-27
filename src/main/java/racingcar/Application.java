@@ -9,17 +9,17 @@ import java.util.List;
 
 public class Application {
     static final int MAX_CAR_NAME_LENGTH = 5;
-    static final String DefaultDelimiter = ",";
+    static final String DEFAULT_DELIMITER= ",";
     public static void main(String[] args) {
         // TODO: 프로그램 구현
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String inputCarNames = Console.readLine();
 
-        if(!inputCarNames.contains(DefaultDelimiter)) {
-            throw new InValidCarNameException();
+        if(!inputCarNames.contains(DEFAULT_DELIMITER)) {
+            throw new InvalidCarNameException();
         }
 
-        List<String> carNames = Arrays.asList(inputCarNames.split(DefaultDelimiter));
+        List<String> carNames = Arrays.asList(inputCarNames.split(DEFAULT_DELIMITER));
 
         if (carNames.size() < 2) {
             throw new InsufficientCarCountException();
@@ -45,15 +45,15 @@ public class Application {
             throw new InvalidRaceCountException();
         }
 
-        int count;
+        int raceCount;
 
         try {
-            count = Integer.parseInt(inputCount);
+            raceCount = Integer.parseInt(inputCount);
         } catch (NumberFormatException e) {
             throw new InvalidRaceCountException();
         }
 
-        if(count < 1) {
+        if(raceCount < 1) {
             throw new InvalidRaceCountException();
         }
 
@@ -61,7 +61,6 @@ public class Application {
 
         //자동차 경주 실행
         RaceManager raceManager = new RaceManager();
-        raceManager.raceCar(count, carNames);
-
+        raceManager.raceCar(raceCount, carNames);
     }
 }
