@@ -42,6 +42,25 @@ class ApplicationTest extends NsTest {
         );
     }
 
+    @Test
+    @DisplayName("자동차의 이름이 ,를 포함하지 않고 적절하게 입력되지 않았을 경우 예외 처리 테스트")
+    void InvalidCarNameExceptionTest() {
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("pobi.javaji", "1"))
+                        .isInstanceOf(InValidCarNameException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException("a", "1"))
+                        .isInstanceOf(InValidCarNameException.class)
+        );
+
+        assertSimpleTest(() ->
+                assertThatThrownBy(() -> runException(" ", "1"))
+                        .isInstanceOf(InValidCarNameException.class)
+        );
+    }
+
 
     @Override
     public void runMain() {
