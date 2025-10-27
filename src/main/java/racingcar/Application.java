@@ -3,6 +3,7 @@ package racingcar;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.exception.CarNameLengthException;
 import racingcar.exception.InputCarNameException;
+import racingcar.exception.InvalidRaceCountException;
 import racingcar.race.RaceManager;
 
 import java.util.Arrays;
@@ -25,7 +26,16 @@ public class Application {
         }
 
         System.out.println("시도할 횟수는 몇 회인가요?");
+
+        String inputCount = Console.readLine();
+        if(inputCount.isEmpty()) {
+            throw new InvalidRaceCountException();
+        }
+
         int count = Integer.parseInt(Console.readLine());
+        if(count < 1) {
+            throw new InvalidRaceCountException();
+        }
 
         Console.close();
 
